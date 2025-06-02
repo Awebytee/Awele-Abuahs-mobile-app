@@ -1,59 +1,63 @@
-import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
-import * as SplashScreen from 'expo-splash-screen';
-import { useEffect } from 'react';
-import 'react-native-reanimated';
+import {Tabs} from 'expo-router'
+import { FontAwesome } from '@expo/vector-icons'
 
-import { useColorScheme } from '@/components/useColorScheme';
-
-export {
-  // Catch any errors thrown by the Layout component.
-  ErrorBoundary,
-} from 'expo-router';
-
-export const unstable_settings = {
-  // Ensure that reloading on `/modal` keeps a back button present.
-  initialRouteName: '(tabs)',
-};
-
-// Prevent the splash screen from auto-hiding before asset loading is complete.
-SplashScreen.preventAutoHideAsync();
-
-export default function RootLayout() {
-  const [loaded, error] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
-    ...FontAwesome.font,
-  });
-
-  // Expo Router uses Error Boundaries to catch errors in the navigation tree.
-  useEffect(() => {
-    if (error) throw error;
-  }, [error]);
-
-  useEffect(() => {
-    if (loaded) {
-      SplashScreen.hideAsync();
-    }
-  }, [loaded]);
-
-  if (!loaded) {
-    return null;
-  }
-
-  return <RootLayoutNav />;
+function TabIcon({ name,color}: {name: any, color: string }) {
+  return <FontAwesome name={name} size={20} color={color} />;
 }
 
-function RootLayoutNav() {
-  const colorScheme = useColorScheme();
-
+export default function Layout() {
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
-      </Stack>
-    </ThemeProvider>
+    <Tabs
+    screenOptions={{
+      tabBarActiveTintColor: '#d63384',
+      tabBarInactiveTintColor: '#999' ,
+    }}
+    >
+      <Tabs.Screen
+      name="index"
+      options={{
+        title: 'Welcome',
+        tabBarIcon: ({color}) => (
+          <FontAwesome name="home" size={20} color={color} />
+        ),
+      }}
+      />
+      <Tabs.Screen
+      name="profile"
+      options={{
+        title: 'Profile',
+        tabBarIcon: ({color}) => (
+          <FontAwesome name="user" size={20} color={color} />
+        ),
+      }}
+      />
+      <Tabs.Screen
+      name="api"
+      options={{
+        title: 'API Data',
+        tabBarIcon: ({color}) => (
+          <FontAwesome name= "cloud-download" size={20} color={color} />
+        ),
+      }}
+      />
+      <Tabs.Screen
+      name="company"
+      options={{
+        title: 'Company',
+        tabBarIcon: ({color}) => (
+          <FontAwesome name= "building" size={20} color={color} />
+        ),
+      }}
+      />
+      <Tabs.Screen
+      name="map"
+      options={{
+        title: 'Map',
+        tabBarIcon: ({color}) => (
+          <FontAwesome name="map" size={20} color={color} />
+        ),
+      }}
+      />
+    </Tabs>
   );
 }
