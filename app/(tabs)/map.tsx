@@ -5,7 +5,7 @@ import {Stack} from 'expo-router';
 export default function MapScreen() {
     return (
         <>
-            <Stack.Screen options={{title: 'MAp'}} />
+            <Stack.Screen options={{title: 'Map'}} />
             <View style={styles.container}>
                 <MapView
                     style={styles.map}

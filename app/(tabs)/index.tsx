@@ -6,7 +6,7 @@ export default function WelcomeScreen() {
     <>
     <Stack.Screen options = {{ title: 'Welcome'}} />
     <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.title}>Hi, I'm Awele</Text>
+      <Text style={styles.title}>Hi, I'm Awele🌼</Text>
       <Image
       source={require('../../assets/images/homeimage.jpg')}
       style={styles.image}
