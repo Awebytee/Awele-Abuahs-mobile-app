@@ -28,7 +28,7 @@ export default function CompanyScreen() {
 
 return (
      <>
-        <Stack.Screen options={{ title: 'Companiess'}} />
+        <Stack.Screen options={{ title: 'Companies'}} />
          <View style={styles.container}>
              <Text style={styles.title}>Company & Email List</Text>
              {loading ? (

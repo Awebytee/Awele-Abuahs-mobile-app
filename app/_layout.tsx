@@ -1,9 +1,9 @@
 import {Tabs} from 'expo-router'
 import { FontAwesome } from '@expo/vector-icons'
 
-function TabIcon({ name,color}: {name: any, color: string }) {
+function tabIcon({ name,color}: {name: any, color: string }) {
   return <FontAwesome name={name} size={20} color={color} />;
-}
+};
 
 export default function Layout() {
   return (
